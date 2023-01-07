@@ -11,7 +11,7 @@ To do anything useful, you will need to build an index from Wikipedia.
 1. Download the latest Wikipedia database dump (this is a ~13GB file!):
 
 ```
-curl -O https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2`
+curl -O https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 ```
 
 2. Extract the text from the articles using Wikipedia Extractor
