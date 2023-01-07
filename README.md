@@ -79,5 +79,5 @@ Example:
 ```
 docker build -t nutrimatic:latest .
 # Next, do the remaining steps to generate the indexes, NOT in the docker image!
-docker run --rm nutrimatic:latest bin/find-expr wiki-merged.index '<aciimnrttu>'
+docker run --rm -v "$(pwd)":/mnt nutrimatic:latest bin/find-expr /mnt/wiki-merged.index '<aciimnrttu>'
 ```
