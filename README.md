@@ -28,7 +28,7 @@ This will write many files named `text/??/wiki_??`.
 3. Index the text (this generates ~50GB of data, and can also take hours!):
 
 ```
-find text -type f | xargs cat | bin/make-index wikipedia`
+find text -type f | xargs cat | bin/make-index wikipedia
 ```
 
 This will write many files named `wikipedia.?????.index`.
