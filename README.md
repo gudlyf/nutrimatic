@@ -78,6 +78,14 @@ Optional: There is a `Dockerfile` present in this repo that can make building th
 Example:
 ```
 docker build -t nutrimatic:latest .
-# Next, do the remaining steps to generate the indexes, NOT in the docker image!
+docker run -it --rm -v "$(pwd)":/mnt nutrimatic:latest sh
+# cd /mnt
+# for x in 0 1 2 3 4 5 6 7 8 9
+> do /usr/local/nutrimatic/bin/merge-indexes 2 wikipedia.????$x.index wiki-merged.$x.index
+> done
+
+/usr/local/nutrimatic/bin/merge-indexes 5 wiki-merged.*.index wiki-merged.index
+exit
+
 docker run --rm -v "$(pwd)":/mnt nutrimatic:latest bin/find-expr /mnt/wiki-merged.index '<aciimnrttu>'
 ```
