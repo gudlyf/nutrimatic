@@ -1,7 +1,7 @@
 This is Nutrimatic (http://nutrimatic.org/usage.html).
 
 To build the source, run "./build.py".  You will need the following installed:
-   * Python
+   * Python (2.x)
    * g++
    * libxml2 (ubuntu: apt-get install libxml2-dev; osx: pip install lxml)
    * libtre (ubuntu: apt-get install libtre-dev; osx: brew install tre)
@@ -15,9 +15,9 @@ To do anything useful, you will need to build an index from Wikipedia.
 2. Extract the text from the articles using Wikipedia Extractor
    (this generates ~12GB of text, and can take several hours!):
 
-     # See http://medialab.di.unipi.it/wiki/Wikipedia_Extractor
-     wget https://raw.githubusercontent.com/attardi/wikiextractor/master/WikiExtractor.py
-     python WikiExtractor.py enwiki-latest-pages-articles.xml.bz2
+     # See https://github.com/attardi/wikiextractor (Requires Python 3.x)
+     git clone https://github.com/attardi/wikiextractor.git
+     python3 -m wikiextractor.WikiExtractor enwiki-latest-pages-articles.xml.bz2
 
    This will write many files named text/??/wiki_??.
 
@@ -59,3 +59,12 @@ Then arrange for your web server to invoke that shell wrapper as a CGI script.
 Have fun,
 
 -- egnor@ofb.net
+
+Optional: There is a `Dockerfile` present in this repo that can make building the project much easier and portable.
+
+Example:
+```
+docker build -t nutrimatic:latest .
+  <Do the remaining steps to generate the indexes, NOT in the docker image!>
+docker run --rm nutrimatic:latest bin/find-expr wiki-merged.index '<aciimnrttu>'
+```
